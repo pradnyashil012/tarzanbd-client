@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #07070f;
+  color: #e2e8f0;
+  font-family: "Space Grotesk", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0e0e1a;
+}
+::-webkit-scrollbar-thumb {
+  background: #8b5cf6;
+  border-radius: 3px;
+}
+
+/* Glow text utility */
+.glow-purple {
+  text-shadow: 0 0 20px rgba(139, 92, 246, 0.7);
+}
+.glow-cyan {
+  text-shadow: 0 0 20px rgba(6, 182, 212, 0.7);
+}
+
+/* Animated border for cards */
+.cyber-card {
+  position: relative;
+  background: #0e0e1a;
+  border: 1px solid #1e1e3a;
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+.cyber-card:hover {
+  border-color: #8b5cf6;
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.2);
+}
+
+/* Grid scan line effect on hero */
+.scanlines {
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(139, 92, 246, 0.015) 2px,
+    rgba(139, 92, 246, 0.015) 4px
+  );
+  pointer-events: none;
+}
