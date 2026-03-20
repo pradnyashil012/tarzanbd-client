@@ -88,13 +88,13 @@ export default function Navbar() {
                 </Link>
               );
             })}
-            <Link
+            {/* <Link
               to="/admin"
               onClick={() => setMenuOpen(false)}
               className="mt-2 px-4 py-2 rounded text-sm font-mono font-bold bg-cyber-purple text-white text-center"
             >
               + Add Entry
-            </Link>
+            </Link> */}
           </div>
         )}
       </div>

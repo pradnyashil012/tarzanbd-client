@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 
+const API_BASE = process.env.REACT_APP_API_BASE_URL?.replace(/\/$/, "") || "";
+const API_ENTRIES = `${API_BASE}/api/entries`;
+
 const TYPES = [
   { value: "pm", label: "Prediction Market" },
   { value: "agent", label: "AI Agent" },
@@ -36,14 +39,20 @@ export default function Admin() {
     }
     setStatus("loading");
     try {
-      const res = await fetch("/api/entries", {
+      const res = await fetch(API_ENTRIES, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
       });
       if (!res.ok) {
-        const data = await res.json();
-        throw new Error(data.error || "Server error");
+        const text = await res.text();
+        let data;
+        try {
+          data = JSON.parse(text);
+        } catch {
+          data = null;
+        }
+        throw new Error(data?.error || text || `Server error (${res.status})`);
       }
       setStatus("success");
       setForm(EMPTY_FORM);

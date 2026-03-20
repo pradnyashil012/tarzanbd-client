@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import EntryCard from "./EntryCard";
 
+const API_BASE = process.env.REACT_APP_API_BASE_URL?.replace(/\/$/, "") || "";
+const API_ENTRIES = `${API_BASE}/api/entries`;
+
 export default function DirectoryPage({ type, title, subtitle, accentColor }) {
   const [entries, setEntries] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -9,7 +12,7 @@ export default function DirectoryPage({ type, title, subtitle, accentColor }) {
 
   useEffect(() => {
     setLoading(true);
-    fetch(`/api/entries?type=${type}`)
+    fetch(`${API_ENTRIES}?type=${type}`)
       .then((r) => {
         if (!r.ok) throw new Error("Failed to fetch");
         return r.json();
