@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 import EntryCard from "./EntryCard";
 
-const API_BASE = process.env.REACT_APP_API_BASE_URL?.replace(/\/$/, "") || "";
+const API_BASE =
+  (process.env.REACT_APP_API_URL || process.env.REACT_APP_API_URL)
+    ?.replace(/\/$/, "") ||
+  "";
 const API_ENTRIES = `${API_BASE}/api/entries`;
 
 export default function DirectoryPage({ type, title, subtitle, accentColor }) {
